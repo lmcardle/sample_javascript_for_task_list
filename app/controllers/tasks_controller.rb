@@ -12,7 +12,10 @@ class TasksController < ApplicationController
     @task = Task.new(params[:task])
     @task.complete = false
     @task.save!
-    redirect_to tasks_url
+    respond_to do |format|
+      format.html { redirect_to tasks_url }
+      format.js
+    end
   end
   
   def update
